@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="{% url 'restro' %}" method="post">
+      {% csrf_token  %}
+      <label> Name :</label>
+      <input type="text" name="name" value="{{ Restro.name  }}"><br><br>
+      <label> street :</label>
+      <input type="text" name="street" value="{{ Restro.street  }}"><br><br>
+      <label> Phone Number :</label>
+      <input type="text" name="number" value="{{ Restro.number  }}"><br><br>
+      <label> city :</label>
+      <input type="text" name="city" value="{{ Restro.city  }}"><br><br>
+      <label> zipcode :</label>
+      <input type="text" name="zipcode" value="{{ Restro.zipcode  }}"><br><br>
+      <label> state or Province :</label>
+      <input type="text" name="stateOrProvince" value="{{ Restro.stateOrProvince  }}"><br><br>
+      <label> country :</label>
+      <input type="text" name="country" value="{{ Restro.country  }}"><br><br>
+      <label> telephone Number :</label>
+      <input type="text" name="telephone" value="{{ Restro.telephone  }}"><br><br>
+      <input type="submit" name="Submit">
+    </form>
+  </body>
+</html>

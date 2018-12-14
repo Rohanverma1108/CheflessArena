@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style media="screen">
+      .navbar{
+        position:absolute;
+        top:0;
+        background-color:transparent;
+        border:0;
+        width:100%;
+      }
+      .page-footer{
+        background-color:transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+    <nav class="navbar navbar-inverse" id="navbar" style='background-color:transparent;margin-bottom:0;'>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{% url 'profile' %}" style="font-size:40px;"><span class="glyphicon glyphicon-fire"></span></a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+          <li style='font-family:Timberline; font-size:35px;'><a href="{% url 'home' %}">Home</a></li>
+          <li style='font-family:Timberline; font-size:35px;'><a href="{% url 'restList' %}">Restaurants</a></li>
+          <li><a href="#" style='font-family:Timberline; font-size:35px;'>Dishes</a></li>
+          <li><a href="{% url 'suggestions' %}" style='font-family:Timberline; font-size:35px;'>Suggestions</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          {% if user.is_authenticated %}
+            <li style='font-family:Timberline; font-size:35px;'>Hi , {{user}}</li>
+            <li style='font-family:Timberline; font-size:35px;'><a href="{% url 'logoutUser' %}">Logout</a></li>
+          {% else %}
+            <li style='font-family:Timberline; font-size:35px;'><a href="{% url 'loginUser' %}">Login</a></li>
+            <li style='font-family:Timberline; font-size:35px;'><a href="{% url 'signup' %}">SignUp</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <div style="margin-top:5%">
+        {% if messages %}
+            {% for message in messages %}
+              <div {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %} style='display: inline; color: black; background-color: #229954; font-size:300%%;'> {{message}} <a href=""><span class="glyphicon glyphicon-remove"></span></a></div>
+            {% endfor %}
+        {% endif %}
+      </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+  </div>
+  <div class="page-footer text-center" style="position:absolute; bottom:0; width:100%;">
+    <a href="#" style="color:white; font-size:150%"><u> ABOUT US </u></a>
+  </div>
+  </body>
+</html>

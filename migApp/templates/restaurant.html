@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  {% block content %}
+  <body>
+    <form method="post">
+      {% csrf_token %}
+      <label> Name :</label>
+      <input type="text" name="name" placeholder="Enter your name"><br><br>
+      <label> street :</label>
+      <input type="text" name="street" placeholder="Enter your street"><br><br>
+      <label> Phone Number :</label>
+      <input type="text" name="number" placeholder="Enter your Phone Number"><br><br>
+      <label> city :</label>
+      <input type="text" name="city" placeholder="Enter your city"><br><br>
+      <label> zipcode :</label>
+      <input type="text" name="zipcode" placeholder="Enter your zipcode"><br><br>
+      <label> state or Province :</label>
+      <input type="text" name="stateOrProvince" placeholder="Enter your state or Province"><br><br>
+      <label> country :</label>
+      <input type="text" name="country" placeholder="Enter your country"><br><br>
+      <label> telephone Number :</label>
+      <input type="text" name="telephone" placeholder="Enter your telephone Number"><br><br>
+      <input type="submit" name="Submit">
+    </form>
+  </body>
+  {% endblock %}
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      @font-face {
+        font-family: "Timberline";
+        src: url("/media/fonts/Timberline/MyFonts/Timberline_Regular.otf") format("opentype");
+      }
+
+    </style>
+  </head>
+  <body>
+    <div style="position:absolute; left:0; right:0; z-index:0; background: url(/media/Night-BBQ_blur.jpg) repeat center center fixed;">
+      {% extends 'base.html' %}
+      {% block content %}
+        <div class ="container-fluid" style="padding:0;">
+          <div style="padding-top:5%;">
+            <h3 style="font-size:100px; align:center; font-family:Timberline; color:white; margin: 0 30% 0 30%;">Restaurants</h3><br><br><br>
+            <ul>
+              {% for obj in restro %}
+              <li style="font-size:25px; align:center; font-family:Sans-sarif; margin-left:5%"><a href="{% url 'show' obj.id%}" style="color:white;">{{obj.name}}</a></li><br>
+              {% endfor %}
+            </ul>
+            <span style="font-size:30px; font-family:Timberline; color:white; float:right; width:50%; padding-bottom:5%;">
+            Want To Register Your Restaurant? <a href="Register/">Click Here</a>
+            <span>
+          </div>
+        </div>
+      {% endblock %}
+     </div>
+  </body>
+</html>

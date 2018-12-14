@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  {% block content %}
+  <body>
+
+     {% for obj in dish %}
+     <ul>
+       <li>{{obj.name}}</li>
+       <!-- <ul>
+         <li><a href="{% url 'delete' obj.id %}">delete</a></li>
+         <li><a href="{% url 'update' obj.id %}">update</a></li>
+       </ul> -->
+     </ul>
+     {% endfor %}
+
+  </body>
+  {% endblock %}
+</html>

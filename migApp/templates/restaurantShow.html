@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      @font-face {
+        font-family: "Timberline";
+        src: url("/media/fonts/Timberline/MyFonts/Timberline_Regular.otf") format("opentype");
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div style="position:absolute; left:0; right:0; z-index:0; background: url(/media/Night-BBQ_blur.jpg) repeat center center fixed;">
+      {% extends 'base.html' %}
+      {% block content %}
+      <div style="padding-top:5%;">
+      <h1 style="font-size:500%; font-family:Timberline; color:white; padding-left:2%;">{{restro.name}}</h1><br><br><br>
+      <ul>
+        <li style="color:#87ceeb; font-size:150%;" ><b style="font-family:Sans-sarif; color:white; padding-left:2%;">Dishes : </b><a href="{{restro.id}}/Dishes/">Click Here</a></li>
+        <li style="color:#87ceeb; font-size:150%;" ><b style=" font-family:Sans-sarif; color:white; padding-left:2%;">street :  </b>{{restro.street}}</li>
+        <li style="color:#87ceeb; font-size:150%;" ><b style=" font-family:Sans-sarif; color:white; padding-left:2%;">Phone Number :  </b>{{restro.number}}</li>
+        <li style="color:#87ceeb; font-size:150%;" ><b style=" font-family:Sans-sarif; color:white; padding-left:2%;">city :  </b>{{restro.city}}</li>
+        <li style="color:#87ceeb; font-size:150%;" ><b style=" font-family:Sans-sarif; color:white; padding-left:2%;">zipcode :  </b>{{restro.zipcode}}</li>
+        <li style="color:#87ceeb; font-size:150%;" ><b style=" font-family:Sans-sarif; color:white; padding-left:2%;">state or Province :  </b>{{restro.stateOrProvince}}</li>
+        <li style="color:#87ceeb; font-size:150%;" ><b style=" font-family:Sans-sarif; color:white; padding-left:2%;">country :  </b>{{restro.country}}</li>
+        <li style="color:#87ceeb; font-size:150%;" ><b style=" font-family:Sans-sarif; color:white; padding-left:2%;">telephone Number :  </b>{{restro.telephone}}</li>
+      <ul><br>
+      <h3 style="font-family:Timberline; font-size:350%; color:white;">Reviews</h3>
+      <h3 style='float:right; margin-top:0; margin-right:20%;'><a href="{% url 'review' restro.id%}">Add Review</a></h3><br><br><br><br>
+      <ol>
+        {% for obj in revi%}
+        <li>
+          <div class="row">
+          <div class="col-md-6" >
+            <ul>
+              <li style="color:#87ceeb; font-size:150%"><b style="font-family:Sans-sarif; color:white; padding-left:2%;">Rating</b> : {{obj.rating}}</li>
+              <li style="color:#87ceeb; font-size:150%"><b style="font-family:Sans-sarif; color:white; padding-left:2%;">Comment</b> : {{obj.comment}}</li>
+              <li style="color:#87ceeb; font-size:150%"><b style="font-family:Sans-sarif; color:white; padding-left:2%;">Date</b> : {{obj.date}}</li>
+              <li style="color:#87ceeb; font-size:150%"><b style="font-family:Sans-sarif; color:white; padding-left:2%;">By</b> : {{obj.user}}</li>
+            </ul><br>
+          </div>
+          <div class="col-md-6">
+            <a href="{% url 'delete' restro.id obj.id %}" class="btn btn-danger"> Delete </a>
+            <a href="{% url 'update' obj.id %}" class="btn btn-info"> Update </a>
+          </div>
+        </div>
+        </li><br>
+        {% endfor %}
+      </ol>
+      <span style="width:100%;">
+        <center>
+          {% if revi.has_previous %}
+          <a href="?page=1" style="color:#87ceeb; font-size:150%"><b style="font-family:Sans-sarif; color:white; padding-left:1%;">first</a>
+          <a href="?page={{revi.previous_page_number}}" style="color:#87ceeb; font-size:150%"><b style="font-family:Sans-sarif; color:white; padding-left:1%;">prev</a>
+          {% endif %}
+          <span>
+           <strong style="color:#87ceeb; font-size:150%">Page {{ revi.number }} of {{ revi.paginator.num_pages }}.</strong>
+         </span>
+          {% if revi.has_next %}
+          <a href="?page={{revi.next_page_number}}" style="color:#87ceeb; font-size:150%"><b style="font-family:Sans-sarif; color:white; padding-left:1%;">next</a>
+          <a href="?page={{revi.paginator.num_pages}}" style="color:#87ceeb; font-size:150%"><b style="font-family:Sans-sarif; color:white; padding-left:1%;">last</a>
+          {% endif %}
+        </center>
+      </span>
+    </div>
+      {% endblock %}
+     </div>
+  </body>
+</html>
